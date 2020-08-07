@@ -1,3 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
 <resources>
+
+
     <string name="app_name">CV</string>
+
+    <!--Navigation menu        -->
+    <string name="home" >Nyitó oldal</string>
+    <string name="schools" >Iskolák</string>
+    <string name="experience" >Szakmai tapasztalatok</string>
+    <string name="hobbys" >Hobbik</string>
+    <string name="languages" >Nyelvek</string>
+
+    <!--Opening page    -->
+    <string name="hungarian" >Magyar</string>
+    <string name="english" >English</string>
+    <string name="welcome" >Üdvözlöm!</string>
+    <string name="choose" >Válasszon nyelvet</string>
 </resources>

@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">CV</string>
+    <!--Navigation menu        -->
+    <string name="home" translatable="false">Home</string>
+    <string name="schools" translatable="false">Schools</string>
+    <string name="experience" translatable="false">Experience</string>
+    <string name="hobbys" translatable="false">Hobbys</string>
+    <string name="languages" translatable="false">Languages</string>
+
+    <!--Opening page    -->
+    <string name="hungarian" translatable="false">Hungarian</string>
+    <string name="english" translatable="false">English</string>
+    <string name="welcome" translatable="false">Welcome!</string>
+    <string name="choose" translatable="false">Choose a language</string>
+</resources>
