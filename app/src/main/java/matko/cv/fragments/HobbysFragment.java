@@ -4,7 +4,8 @@ import androidx.fragment.app.Fragment;
 
 import org.androidannotations.annotations.EFragment;
 
-import bbraun.matko.cv.R;
+import matko.cv.R;
+
 
 /**
  * @author Matkovics Gergely<br>

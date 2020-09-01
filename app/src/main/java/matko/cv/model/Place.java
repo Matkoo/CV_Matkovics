@@ -1,6 +1,7 @@
 package matko.cv.model;
 
 import androidx.room.Entity;
+import androidx.room.Ignore;
 import androidx.room.PrimaryKey;
 
 /**
@@ -22,18 +23,26 @@ public class Place {
 
     private String timeSpent;
 
+    private String desc;
+
     private String latitude;
 
     private String longitude;
 
-    public Place(String placeName, String type, String timeSpent, String latitude, String longitude) {
+    private boolean isSchool;
+
+    @Ignore
+    private boolean expanded;
+
+    public Place(String placeName, String type, String timeSpent, String desc, String latitude, String longitude, boolean isSchool) {
         this.placeName = placeName;
         this.type = type;
         this.timeSpent = timeSpent;
+        this.desc = desc;
         this.latitude = latitude;
         this.longitude = longitude;
+        this.isSchool = isSchool;
     }
-
 
     public int getId() {
         return id;
@@ -81,5 +90,29 @@ public class Place {
 
     public void setLongitude(String longitude) {
         this.longitude = longitude;
+    }
+
+    public String getDesc() {
+        return desc;
+    }
+
+    public void setDesc(String desc) {
+        this.desc = desc;
+    }
+
+    public boolean isExpanded() {
+        return expanded;
+    }
+
+    public void setExpanded(boolean expanded) {
+        this.expanded = expanded;
+    }
+
+    public boolean isSchool() {
+        return isSchool;
+    }
+
+    public void setSchool(boolean school) {
+        isSchool = school;
     }
 }

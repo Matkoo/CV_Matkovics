@@ -3,12 +3,29 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
+
+    <com.google.android.gms.maps.MapView
+        android:id="@+id/mapSchool"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_centerInParent="true"
+        android:name="com.google.android.gms.maps.SupportMapFragment"/>
+
     <TextView
+        android:id="@+id/txSchoolTitle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Schools"
-        android:textSize="20dp"
-        android:layout_centerInParent="true"/>
+        android:text="@string/schools"
+        android:textSize="30dp"
+        android:textStyle="bold"
+        android:layout_centerHorizontal="true"/>
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recSchooList"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"/>
+
 
 
 </RelativeLayout>

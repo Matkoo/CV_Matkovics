@@ -1,4 +1,4 @@
-package bbraun.matko.cv;
+package matko.cv;
 
 import org.junit.Test;
 

@@ -23,6 +23,13 @@ public interface PlaceDAO {
     @Query("SELECT * FROM place")
     List<Place> getAllPlace();
 
+    @Query("SELECT * FROM place WHERE isSchool = 1 ")
+    List<Place> getAllSchool();
+
+    @Query("SELECT * FROM place WHERE isSchool = 0 ")
+    List<Place> getAllJob();
+
+
     @Insert
     void insertPlace(Place place);
 
