@@ -29,12 +29,12 @@ public class Place {
 
     private String longitude;
 
-    private boolean isSchool;
+    private int isSchool;
 
     @Ignore
     private boolean expanded;
 
-    public Place(String placeName, String type, String timeSpent, String desc, String latitude, String longitude, boolean isSchool) {
+    public Place(String placeName, String type, String timeSpent, String desc, String latitude, String longitude, int isSchool) {
         this.placeName = placeName;
         this.type = type;
         this.timeSpent = timeSpent;
@@ -108,11 +108,11 @@ public class Place {
         this.expanded = expanded;
     }
 
-    public boolean isSchool() {
+    public int isSchool() {
         return isSchool;
     }
 
-    public void setSchool(boolean school) {
+    public void setSchool(int school) {
         isSchool = school;
     }
 }

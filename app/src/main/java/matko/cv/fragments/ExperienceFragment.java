@@ -5,25 +5,25 @@ import android.view.View;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.annotation.UiThread;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.google.android.gms.maps.CameraUpdateFactory;
-import com.google.android.gms.maps.GoogleMap;
-import com.google.android.gms.maps.MapView;
-import com.google.android.gms.maps.MapsInitializer;
-import com.google.android.gms.maps.OnMapReadyCallback;
-import com.google.android.gms.maps.model.LatLng;
-import com.google.android.gms.maps.model.MarkerOptions;
-
-import org.androidannotations.annotations.Background;
 import org.androidannotations.annotations.EFragment;
 import org.androidannotations.annotations.ViewById;
+import org.osmdroid.tileprovider.tilesource.TileSourceFactory;
+import org.osmdroid.util.GeoPoint;
+import org.osmdroid.views.MapView;
+import org.osmdroid.views.overlay.Marker;
 
 import java.util.ArrayList;
 import java.util.List;
 
+import io.reactivex.SingleObserver;
+import io.reactivex.android.schedulers.AndroidSchedulers;
+import io.reactivex.disposables.Disposable;
+import io.reactivex.schedulers.Schedulers;
 import matko.cv.R;
 import matko.cv.adapter.PlaceRecyclerAdapter;
 import matko.cv.dbhelper.PlaceDatabase;
@@ -37,11 +37,10 @@ import matko.cv.model.Place;
  */
 
 @EFragment(R.layout.fragment_experience)
-public class ExperienceFragment extends Fragment implements PlaceRecyclerAdapter.OnPlaceListener, OnMapReadyCallback {
+public class ExperienceFragment extends Fragment implements PlaceRecyclerAdapter.OnPlaceListener {
 
+    @ViewById(R.id.mapExp)
     protected MapView mapView;
-
-    private GoogleMap map;
 
     private List<Place> expList = new ArrayList<>();
 
@@ -52,48 +51,76 @@ public class ExperienceFragment extends Fragment implements PlaceRecyclerAdapter
 
     private PlaceDatabase placeDatabase;
 
+    private Place slectedPlace;
+
     @Override
     public void onStart() {
         super.onStart();
 
+        initDatabase();
         intiView();
+        initMap();
 
     }
 
-    @Background
-    protected void intiView() {
-        placeDatabase = PlaceDatabase.getInstance(getContext());
+    private void initDatabase() {
 
-        expList = placeDatabase.latleletAzonositoDAO().getAllJob();
-        adapter = new PlaceRecyclerAdapter(expList,getContext(),this);
+        placeDatabase = PlaceDatabase.getInstance(getContext());
+        placeDatabase.latleletAzonositoDAO().getAllJob().subscribeOn(Schedulers.computation())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe(new SingleObserver<List<Place>>() {
+                    @Override
+                    public void onSubscribe(@NonNull Disposable d) {
+
+                    }
+
+                    @Override
+                    public void onSuccess(@NonNull List<Place> places) {
+
+                        expList = new ArrayList<>(places);
+                        if(mapView != null)
+                            mapView.invalidate();
+                        intiView();
+
+                    }
+
+                    @Override
+                    public void onError(@NonNull Throwable e) {
+
+                    }
+                });
+
+    }
+
+    @UiThread
+    protected void initMap() {
+
+        if(mapView != null){
+            mapView.onResume();
+
+            mapView.setTileSource(TileSourceFactory.MAPNIK);
+            mapView.setMultiTouchControls(true);
+
+
+            //set the map to Tatabánya
+            mapView.getController().setCenter(new GeoPoint( 47.560504585701146, 18.424900931157893));
+            mapView.getController().setZoom(14.0);
+            mapView.invalidate();
+
+        }
+    }
+
+    @UiThread
+    protected void intiView() {
+
+        adapter = new PlaceRecyclerAdapter(expList, getContext(), this);
         recExpList.setAdapter(adapter);
         LinearLayoutManager layoutManager
                 = new LinearLayoutManager(getContext(), LinearLayoutManager.HORIZONTAL, false);
         recExpList.setLayoutManager(layoutManager);
-        recExpList.setOnScrollChangeListener(new View.OnScrollChangeListener() {
-            @Override
-            public void onScrollChange(View v, int scrollX, int scrollY, int oldScrollX, int oldScrollY) {
-                System.out.println("Scroll x : "+scrollX);
-                System.out.println("Scroll y : "+scrollY);
-
-                System.out.println("oldScroll x : "+oldScrollX);
-                System.out.println("oldScroll y : "+oldScrollY);
-
-
-            }
-        });
+        
     }
 
-    @Override
-    public void onPlaceClick(int position) {
-        map.clear();
-        Place slectedPlace = expList.get(position);
-        LatLng school = new LatLng(Double.parseDouble(slectedPlace.getLatitude()),Double.parseDouble(slectedPlace.getLongitude()));
-        map.moveCamera(CameraUpdateFactory.newLatLngZoom(school,17.0f));
-        map.addMarker(new MarkerOptions().position(school));
-
-        System.out.println(expList.get(position).getPlaceName()+" Here a click");
-    }
 
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
@@ -101,26 +128,36 @@ public class ExperienceFragment extends Fragment implements PlaceRecyclerAdapter
 
         mapView = view.findViewById(R.id.mapExp);
 
-        if(mapView != null){
-            mapView.onCreate(null);
+        if (mapView != null) {
             mapView.onResume();
-            mapView.getMapAsync(this);
         }
     }
 
     @Override
-    public void onMapReady(GoogleMap googleMap) {
+    public void onResume() {
+        super.onResume();
+        if (mapView != null)
+            mapView.onResume();
+    }
 
-        System.out.println("Run on map ready");
+    @Override
+    public void onPlaceClick(int position) {
 
-        MapsInitializer.initialize(getContext());
+        mapView.getOverlays().clear();
+        mapView.invalidate();
 
-        map = googleMap;
+        slectedPlace = expList.get(position);
+        GeoPoint job = new GeoPoint(Double.parseDouble(slectedPlace.getLatitude()), Double.parseDouble(slectedPlace.getLongitude()));
 
-        LatLng bpLocation = new LatLng(47.586831,18.397964);
-        map.addMarker(new MarkerOptions().position(bpLocation));
-        map.moveCamera(CameraUpdateFactory.newLatLng(bpLocation));
-        map.animateCamera(CameraUpdateFactory.zoomTo(10.0f));
+        Marker startMarker = new Marker(mapView);
+        startMarker.setPosition(job);
+        startMarker.setAnchor(Marker.ANCHOR_CENTER, Marker.ANCHOR_BOTTOM);
+        mapView.getOverlays().add(startMarker);
+
+
+        mapView.getController().setCenter(job);
+        mapView.getController().setZoom(17.0);
+        mapView.invalidate();
 
     }
 }

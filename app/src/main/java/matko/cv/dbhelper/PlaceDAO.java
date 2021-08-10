@@ -8,6 +8,7 @@ import androidx.room.Update;
 
 import java.util.List;
 
+import io.reactivex.Single;
 import matko.cv.model.Place;
 
 /**
@@ -24,10 +25,10 @@ public interface PlaceDAO {
     List<Place> getAllPlace();
 
     @Query("SELECT * FROM place WHERE isSchool = 1 ")
-    List<Place> getAllSchool();
+    Single<List<Place>> getAllSchool();
 
     @Query("SELECT * FROM place WHERE isSchool = 0 ")
-    List<Place> getAllJob();
+    Single<List<Place>> getAllJob();
 
 
     @Insert
