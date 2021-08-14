@@ -22,7 +22,7 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
-import java.nio.charset.Charset;
+import java.nio.charset.StandardCharsets;
 import java.util.List;
 
 import matko.cv.R;
@@ -51,13 +51,11 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     private ActionBar actionBar;
 
 
-
-
-    private OpenFragment openFragment = new OpenFragment_();
-    private ExperienceFragment experienceFragment = new ExperienceFragment_();
-    private HobbysFragment hobbysFragment = new HobbysFragment_();
-    private LanguagesFragment languagesFragment = new LanguagesFragment_();
-    private SchoolsFragment schoolsFragment = new SchoolsFragment_();
+    private final OpenFragment openFragment = new OpenFragment_();
+    private final ExperienceFragment experienceFragment = new ExperienceFragment_();
+    private final HobbysFragment hobbysFragment = new HobbysFragment_();
+    private final LanguagesFragment languagesFragment = new LanguagesFragment_();
+    private final SchoolsFragment schoolsFragment = new SchoolsFragment_();
 
     private PlaceDatabase placeDatabase;
 
@@ -65,7 +63,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     @Override
     public void onBackPressed() {
 
-        if(drawer_layout.isDrawerOpen(GravityCompat.START)){
+        if (drawer_layout.isDrawerOpen(GravityCompat.START)) {
             drawer_layout.closeDrawer(GravityCompat.START);
         }
         super.onBackPressed();
@@ -80,32 +78,53 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         //set the user agent to OSM
         Configuration.getInstance().setUserAgentValue(BuildConfig.APPLICATION_ID);
 
-        actionBar = getSupportActionBar();
 
+        initActionBar();
+
+
+    }
+
+    private void initActionBar() {
+        actionBar = getSupportActionBar();
         actionBar.setTitle("Matkovics");
         actionBar.setHomeAsUpIndicator(R.drawable.more);
         actionBar.setDisplayHomeAsUpEnabled(true);
-
-
     }
 
     @Override
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
-        if(!drawer_layout.isDrawerOpen(GravityCompat.START)){
-            actionBar.setHomeAsUpIndicator(R.drawable.list);
+
+        if (!drawer_layout.isDrawerOpen(GravityCompat.START)) {
             drawer_layout.openDrawer(GravityCompat.START);
 
         }
-        if(drawer_layout.isDrawerOpen(GravityCompat.START)){
+        if (drawer_layout.isDrawerOpen(GravityCompat.START)) {
             drawer_layout.closeDrawer(GravityCompat.START);
-            actionBar.setHomeAsUpIndicator(R.drawable.more);
         }
+
         return super.onOptionsItemSelected(item);
     }
+
 
     @Override
     protected void onStart() {
         super.onStart();
+
+
+        //change navigation icon when drawer menu condition is changing
+        drawer_layout.addDrawerListener(new DrawerLayout.SimpleDrawerListener() {
+            @Override
+            public void onDrawerStateChanged(int newState) {
+                if (!drawer_layout.isDrawerOpen(GravityCompat.START)) {
+                    actionBar.setHomeAsUpIndicator(R.drawable.more);
+                }
+                if (drawer_layout.isDrawerOpen(GravityCompat.START)) {
+                    actionBar.setHomeAsUpIndicator(R.drawable.list);
+                }
+
+            }
+        });
+
 
         navView.bringToFront();
         navView.setNavigationItemSelectedListener(this);
@@ -116,15 +135,14 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     }
 
 
-
     @Background
     public void dbUpload() {
 
         placeDatabase = PlaceDatabase.getInstance(this);
-        
+
         List<Place> placeList = placeDatabase.latleletAzonositoDAO().getAllPlace();
 
-        for (Place item: placeList) {
+        for (Place item : placeList) {
             placeDatabase.latleletAzonositoDAO().deletePlace(item);
         }
 
@@ -133,16 +151,16 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         String line = "";
 
         int count = 0;
-        try(BufferedReader reader = new BufferedReader(new InputStreamReader(is, Charset.forName("UTF-8")));) {
+        try (BufferedReader reader = new BufferedReader(new InputStreamReader(is, StandardCharsets.UTF_8))) {
 
             while ((line = reader.readLine()) != null) {
-                if (count > 0 ) {
-                    String[] split = line.split(",");;
-                    placeDatabase.latleletAzonositoDAO().insertPlace(new Place(split[1], split[2], split[3],split[4], split[5], split[6],Integer.parseInt(split[7])));
+                if (count > 0) {
+                    String[] split = line.split(",");
+                    placeDatabase.latleletAzonositoDAO().insertPlace(new Place(split[1], split[2], split[3], split[4], split[5], split[6], Integer.parseInt(split[7])));
                 }
                 count++;
             }
-        }catch (IOException e){
+        } catch (IOException e) {
 
         }
 
