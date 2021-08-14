@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.view.MenuItem;
 
 import androidx.annotation.NonNull;
+import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
@@ -47,6 +48,9 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     @ViewById(R.id.drawer_layout)
     protected DrawerLayout drawer_layout;
 
+    private ActionBar actionBar;
+
+
 
 
     private OpenFragment openFragment = new OpenFragment_();
@@ -72,10 +76,31 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+
         //set the user agent to OSM
         Configuration.getInstance().setUserAgentValue(BuildConfig.APPLICATION_ID);
 
+        actionBar = getSupportActionBar();
 
+        actionBar.setTitle("Matkovics");
+        actionBar.setHomeAsUpIndicator(R.drawable.more);
+        actionBar.setDisplayHomeAsUpEnabled(true);
+
+
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+        if(!drawer_layout.isDrawerOpen(GravityCompat.START)){
+            actionBar.setHomeAsUpIndicator(R.drawable.list);
+            drawer_layout.openDrawer(GravityCompat.START);
+
+        }
+        if(drawer_layout.isDrawerOpen(GravityCompat.START)){
+            drawer_layout.closeDrawer(GravityCompat.START);
+            actionBar.setHomeAsUpIndicator(R.drawable.more);
+        }
+        return super.onOptionsItemSelected(item);
     }
 
     @Override
