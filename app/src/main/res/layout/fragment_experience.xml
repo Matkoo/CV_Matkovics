@@ -13,13 +13,13 @@
         android:id="@+id/txExp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/experience"
-        android:background="#785c5c"
-        android:textColor="#ffff"
+        android:layout_centerHorizontal="true"
+        android:background="#565e6b"
         android:paddingHorizontal="10dp"
+        android:text="@string/experience"
+        android:textColor="#ffff"
         android:textSize="30dp"
-        android:textStyle="bold"
-        android:layout_centerHorizontal="true"/>
+        android:textStyle="bold" />
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recExpList"

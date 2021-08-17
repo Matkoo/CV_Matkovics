@@ -15,7 +15,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/schools"
-        android:background="#785c5c"
+        android:background="#565e6b"
         android:textColor="#ffff"
         android:paddingHorizontal="10dp"
         android:textSize="30dp"
