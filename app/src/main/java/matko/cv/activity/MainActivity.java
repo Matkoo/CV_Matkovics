@@ -2,6 +2,7 @@ package matko.cv.activity;
 
 
 import android.os.Bundle;
+import android.util.Log;
 import android.view.MenuItem;
 
 import androidx.annotation.NonNull;
@@ -33,14 +34,17 @@ import matko.cv.fragments.HobbysFragment;
 import matko.cv.fragments.HobbysFragment_;
 import matko.cv.fragments.LanguagesFragment;
 import matko.cv.fragments.LanguagesFragment_;
-import matko.cv.fragments.OpenFragment;
-import matko.cv.fragments.OpenFragment_;
+import matko.cv.fragments.PersonalInfoFragment;
+import matko.cv.fragments.PersonalInfoFragment_;
 import matko.cv.fragments.SchoolsFragment;
 import matko.cv.fragments.SchoolsFragment_;
 import matko.cv.model.Place;
 
 @EActivity(R.layout.activity_main)
 public class MainActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
+
+
+    private static final String TAG = "MainActivity";
 
     @ViewById(R.id.nav_view)
     protected NavigationView navView;
@@ -51,7 +55,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     private ActionBar actionBar;
 
 
-    private final OpenFragment openFragment = new OpenFragment_();
+    private final PersonalInfoFragment personalInfoFragment = new PersonalInfoFragment_();
     private final ExperienceFragment experienceFragment = new ExperienceFragment_();
     private final HobbysFragment hobbysFragment = new HobbysFragment_();
     private final LanguagesFragment languagesFragment = new LanguagesFragment_();
@@ -86,7 +90,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
     private void initActionBar() {
         actionBar = getSupportActionBar();
-        actionBar.setTitle("Matkovics");
+        actionBar.setTitle("Matkovics Gergely");
         actionBar.setHomeAsUpIndicator(R.drawable.more);
         actionBar.setDisplayHomeAsUpEnabled(true);
     }
@@ -129,7 +133,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         navView.bringToFront();
         navView.setNavigationItemSelectedListener(this);
 
-        getSupportFragmentManager().beginTransaction().replace(R.id.main_container, openFragment).commit();
+        getSupportFragmentManager().beginTransaction().replace(R.id.main_container, personalInfoFragment).commit();
 
         dbUpload();
     }
@@ -161,7 +165,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                 count++;
             }
         } catch (IOException e) {
-
+            Log.e(TAG, "Exception by open the db file " + e.getMessage() );
         }
 
     }
@@ -172,7 +176,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
         switch (menuItem.getItemId()) {
             case R.id.nav_home:
-                getSupportFragmentManager().beginTransaction().replace(R.id.main_container, openFragment).commit();
+                getSupportFragmentManager().beginTransaction().replace(R.id.main_container, personalInfoFragment).commit();
                 drawer_layout.closeDrawer(GravityCompat.START);
                 return true;
             case R.id.nav_experience:

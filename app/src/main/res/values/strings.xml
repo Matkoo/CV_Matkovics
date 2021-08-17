@@ -5,7 +5,7 @@
     <string name="app_name">CV</string>
 
     <!--Navigation menu        -->
-    <string name="home" >Nyitó oldal</string>
+    <string name="home" >Személyes adatok</string>
     <string name="schools" >Iskolák</string>
     <string name="experience" >Szakmai tapasztalatok</string>
     <string name="hobbys" >Hobbik</string>

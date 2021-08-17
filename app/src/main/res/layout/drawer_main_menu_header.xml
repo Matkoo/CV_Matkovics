@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent"
+    android:layout_width="wrap_content"
     android:layout_height="150dp"
     android:background="@drawable/header_background">
 
@@ -9,17 +9,44 @@
     <ImageView
         android:layout_width="90dp"
         android:layout_height="90dp"
+        android:id="@+id/profile_picture"
         android:background="@drawable/profile_pic"
         android:layout_centerVertical="true"
-        android:layout_marginLeft="10dp"/>
+        android:layout_marginLeft="7dp"/>
+
+    <TextView
+        android:id="@+id/name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignTop="@+id/profile_picture"
+        android:layout_centerInParent="true"
+        android:layout_marginLeft="7dp"
+        android:layout_toRightOf="@+id/profile_picture"
+        android:text="Matkovics Gergely"
+        android:textColor="#ffffff"
+        android:textSize="15dp"
+        android:textStyle="bold" />
+
+    <TextView
+        android:id="@+id/phone_number"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/name"
+        android:layout_margin="7dp"
+        android:layout_toRightOf="@+id/profile_picture"
+        android:text="+36 70 584 5175 "
+        android:textColor="#ffffff"
+        android:textSize="11dp" />
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_centerInParent="true"
-        android:text="Header"
+        android:layout_below="@+id/phone_number"
+        android:layout_marginLeft="7dp"
+        android:layout_toRightOf="@+id/profile_picture"
+        android:text="gergelymatkovics82@gmail.com"
         android:textColor="#ffffff"
-        android:textSize="20dp"
-        android:textStyle="bold" />
+        android:textSize="11dp" />
+
 
 </RelativeLayout>
