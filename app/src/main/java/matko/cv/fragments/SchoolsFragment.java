@@ -1,5 +1,7 @@
 package matko.cv.fragments;
 
+import android.util.Log;
+
 import androidx.annotation.NonNull;
 import androidx.annotation.UiThread;
 import androidx.fragment.app.Fragment;
@@ -35,9 +37,10 @@ import matko.cv.model.Place;
 @EFragment(R.layout.fragment_schools)
 public class SchoolsFragment extends Fragment implements PlaceRecyclerAdapter.OnPlaceListener {
 
+    private static final String TAG = "SchoolsFragment";
+
     @ViewById(R.id.mapSchool)
     protected MapView mapView;
-
 
     private List<Place> schoolList = new ArrayList<>();
 
@@ -112,10 +115,13 @@ public class SchoolsFragment extends Fragment implements PlaceRecyclerAdapter.On
     protected void intiView() {
 
         adapter = new PlaceRecyclerAdapter(schoolList,getContext(),this);
-        recSchooList.setAdapter(adapter);
-        LinearLayoutManager layoutManager
-                = new LinearLayoutManager(getContext(), LinearLayoutManager.HORIZONTAL, false);
-        recSchooList.setLayoutManager(layoutManager);
+        if(adapter != null) {
+            recSchooList.setAdapter(adapter);
+            LinearLayoutManager layoutManager = new LinearLayoutManager(getContext(), LinearLayoutManager.HORIZONTAL, false);
+            recSchooList.setLayoutManager(layoutManager);
+        }else{
+            Log.e(TAG, "Unsuccesful load the adapter" );
+        }
 
     }
 

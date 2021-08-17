@@ -3,12 +3,42 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <TextView
+
+    <RelativeLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Languages"
-        android:textSize="20dp"
-        android:layout_centerInParent="true"/>
+        android:layout_centerInParent="true">
 
+        <TextView
+            android:id="@+id/txChoose"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/choose"
+            android:background="#565e6b"
+            android:textColor="#ffff"
+            android:textSize="30dp"
+            android:paddingHorizontal="10dp"/>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/txChoose"
+            android:layout_centerInParent="true"
+            android:layout_marginVertical="20dp">
+
+            <Button
+                android:id="@+id/btHun"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/hungarian" />
+
+            <Button
+                android:id="@+id/btEng"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/txChoose"
+                android:text="@string/english" />
+        </LinearLayout>
+    </RelativeLayout>
 
 </RelativeLayout>

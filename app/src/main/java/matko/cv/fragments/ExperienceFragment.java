@@ -1,6 +1,7 @@
 package matko.cv.fragments;
 
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 
 import androidx.annotation.NonNull;
@@ -38,6 +39,8 @@ import matko.cv.model.Place;
 
 @EFragment(R.layout.fragment_experience)
 public class ExperienceFragment extends Fragment implements PlaceRecyclerAdapter.OnPlaceListener {
+
+    private static final String TAG = "ExperienceFragment";
 
     @ViewById(R.id.mapExp)
     protected MapView mapView;
@@ -114,10 +117,13 @@ public class ExperienceFragment extends Fragment implements PlaceRecyclerAdapter
     protected void intiView() {
 
         adapter = new PlaceRecyclerAdapter(expList, getContext(), this);
-        recExpList.setAdapter(adapter);
-        LinearLayoutManager layoutManager
-                = new LinearLayoutManager(getContext(), LinearLayoutManager.HORIZONTAL, false);
-        recExpList.setLayoutManager(layoutManager);
+        if(adapter != null ) {
+            recExpList.setAdapter(adapter);
+            LinearLayoutManager layoutManager = new LinearLayoutManager(getContext(), LinearLayoutManager.HORIZONTAL, false);
+            recExpList.setLayoutManager(layoutManager);
+        }else{
+            Log.e(TAG, "Unsuccesful load the adapter" );
+        }
         
     }
 
@@ -151,7 +157,7 @@ public class ExperienceFragment extends Fragment implements PlaceRecyclerAdapter
 
         Marker startMarker = new Marker(mapView);
         startMarker.setPosition(job);
-        startMarker.setAnchor(Marker.ANCHOR_CENTER, Marker.ANCHOR_BOTTOM);
+//        startMarker.setAnchor(Marker.ANCHOR_CENTER, Marker.ANCHOR_BOTTOM);
         mapView.getOverlays().add(startMarker);
 
 

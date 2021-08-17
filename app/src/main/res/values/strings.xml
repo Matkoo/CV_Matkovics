@@ -4,15 +4,26 @@
 
     <string name="app_name">CV</string>
     <!--Navigation menu        -->
-    <string name="home" >Személyes adatok</string>
+    <string name="home" >Készségek</string>
     <string name="schools" >Iskolák</string>
     <string name="experience" >Szakmai tapasztalatok</string>
     <string name="hobbys" >Hobbik</string>
     <string name="languages" >Nyelvek</string>
 
-    <!--Opening page    -->
+    <!--Language setup page    -->
     <string name="hungarian" >Magyar</string>
     <string name="english" >English</string>
-    <string name="welcome" >Üdvözlöm!</string>
+    <string name="german" >Német</string>
     <string name="choose" >Válasszon nyelvet</string>
+    
+    <!--Skills page     -->
+    <string name="skills">Ismeretek</string>
+    <string name="operatingsystem">Operációs rendszere</string>
+    <string name="other">Egyebek</string>
+    <string name="hungarianlevel">anyanyelv</string>
+    <string name="englishlevel">középfok</string>
+    <string name="germanlevel">alap fok</string>
+    <string name="aboutme">Magamról</string>
+    <string name="aboutmecontent">kitartó, szorgalmas, rugalmas</string>
+
 </resources>

@@ -1,0 +1,190 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+
+    <TextView
+        android:id="@+id/skillTv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="20dp"
+        android:layout_marginTop="30dp"
+        android:background="#565e6b"
+        android:paddingLeft="10dp"
+        android:paddingRight="70dp"
+        android:text="@string/skills"
+        android:textColor="#ffff"
+        android:textSize="20dp"
+        android:textStyle="bold" />
+
+    <TextView
+        android:id="@+id/javaTv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/skillTv"
+        android:layout_marginLeft="25dp"
+        android:layout_marginTop="10dp"
+        android:text="Java"
+        android:textStyle="bold" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/skillsTv"
+        android:layout_below="@+id/javaTv"
+        android:layout_marginTop="5dp"
+        android:layout_marginLeft="30dp"
+        android:text="android, OSM, java 8,java se, swing , fx ,java ee" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/frameworkTv"
+        android:layout_below="@+id/skillsTv"
+        android:layout_marginTop="10dp"
+        android:layout_marginLeft="25dp"
+        android:text="Frameworks"
+        android:textStyle="bold"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/frameworksTv"
+        android:layout_below="@+id/frameworkTv"
+        android:layout_marginTop="5dp"
+        android:layout_marginLeft="30dp"
+        android:text="Vaadin,JSF,Spring, RabbitMQ, gRPC " />
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/operatinsystemTv"
+        android:layout_below="@+id/frameworksTv"
+        android:layout_marginTop="10dp"
+        android:layout_marginLeft="25dp"
+        android:text="@string/operatingsystem"
+        android:textStyle="bold"/>
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/operatingsystemsTv"
+        android:layout_below="@+id/operatinsystemTv"
+        android:layout_marginTop="5dp"
+        android:layout_marginLeft="30dp"
+        android:text="linux, windows" />
+
+    <TextView
+        android:id="@+id/otherTv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/operatingsystemsTv"
+        android:layout_marginLeft="25dp"
+        android:layout_marginTop="10dp"
+        android:text="@string/other"
+        android:textStyle="bold" />
+
+    <TextView
+        android:id="@+id/othersTv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/otherTv"
+        android:layout_marginLeft="30dp"
+        android:layout_marginTop="5dp"
+        android:text="jira, git, maven, gradel,azure devops" />
+
+    <TextView
+        android:id="@+id/languageTv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/othersTv"
+        android:layout_marginLeft="20dp"
+        android:layout_marginTop="25dp"
+        android:background="#565e6b"
+        android:paddingLeft="10dp"
+        android:paddingRight="70dp"
+        android:text="@string/languages"
+        android:textColor="#ffff"
+        android:textSize="20dp"
+        android:textStyle="bold" />
+
+    <TextView
+        android:id="@+id/hungarianTv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/languageTv"
+        android:layout_marginLeft="25dp"
+        android:layout_marginTop="10dp"
+        android:text="@string/hungarian"
+        android:textStyle="bold" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/languageTv"
+        android:layout_marginLeft="5dp"
+        android:layout_marginTop="10dp"
+        android:layout_toRightOf="@id/hungarianTv"
+        android:text="@string/hungarianlevel" />
+    <TextView
+        android:id="@+id/englishTv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/hungarianTv"
+        android:layout_marginLeft="25dp"
+        android:layout_marginTop="5dp"
+        android:text="@string/english"
+        android:textStyle="bold" />
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_toRightOf="@id/englishTv"
+        android:layout_below="@+id/hungarianTv"
+        android:layout_marginTop="5dp"
+        android:layout_marginLeft="5dp"
+        android:text="@string/englishlevel" />
+
+    <TextView
+        android:id="@+id/germanTv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/englishTv"
+        android:layout_marginLeft="25dp"
+        android:layout_marginTop="5dp"
+        android:text="@string/german"
+        android:textStyle="bold" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/englishTv"
+        android:layout_marginLeft="5dp"
+        android:layout_marginTop="5dp"
+        android:layout_toRightOf="@id/germanTv"
+        android:text="@string/germanlevel" />
+    <TextView
+        android:id="@+id/aboutmeTv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/germanTv"
+        android:layout_marginLeft="20dp"
+        android:layout_marginTop="25dp"
+        android:background="#565e6b"
+        android:paddingLeft="10dp"
+        android:paddingRight="70dp"
+        android:text="@string/aboutme"
+        android:textColor="#ffff"
+        android:textSize="20dp"
+        android:textStyle="bold" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/aboutmeTv"
+        android:layout_marginLeft="30dp"
+        android:layout_marginTop="10dp"
+        android:text="@string/aboutmecontent" />
+
+
+
+</RelativeLayout>

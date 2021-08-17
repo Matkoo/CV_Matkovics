@@ -7,7 +7,7 @@
 
         <item
             android:id="@+id/nav_home"
-            android:icon="@drawable/ic_baseline_home_24"
+            android:icon="@drawable/ic_baseline_info_24"
             android:title="@string/home" />
 
         <item
@@ -27,7 +27,7 @@
 
         <item
             android:id="@+id/nav_languages"
-            android:icon="@drawable/ic_baseline_language_24"
+            android:icon="@drawable/ic_baseline_phonelink_setup_24"
             android:title="@string/languages" />
 
 
