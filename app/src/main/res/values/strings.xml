@@ -3,7 +3,6 @@
 
 
     <string name="app_name">CV</string>
-
     <!--Navigation menu        -->
     <string name="home" >Személyes adatok</string>
     <string name="schools" >Iskolák</string>

@@ -95,6 +95,13 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         actionBar.setDisplayHomeAsUpEnabled(true);
     }
 
+
+    //Check the change in language after restart the activity
+    @Override
+    public void onConfigurationChanged(@NonNull android.content.res.Configuration newConfig) {
+        super.onConfigurationChanged(newConfig);
+    }
+
     @Override
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
 
