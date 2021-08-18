@@ -13,7 +13,7 @@
         <entry key="app/src/main/res/drawable/more.xml" value="0.2140625" />
         <entry key="app/src/main/res/layout/activity_main.xml" value="0.33016304347826086" />
         <entry key="app/src/main/res/layout/drawer_main_menu_header.xml" value="0.33016304347826086" />
-        <entry key="app/src/main/res/layout/fragment_experience.xml" value="0.33016304347826086" />
+        <entry key="app/src/main/res/layout/fragment_experience.xml" value="0.1" />
         <entry key="app/src/main/res/layout/fragment_hobbys.xml" value="0.33016304347826086" />
         <entry key="app/src/main/res/layout/fragment_languages.xml" value="0.2918803418803419" />
         <entry key="app/src/main/res/layout/fragment_open.xml" value="0.33016304347826086" />

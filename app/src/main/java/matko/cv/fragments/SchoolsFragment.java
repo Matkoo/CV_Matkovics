@@ -1,12 +1,14 @@
 package matko.cv.fragments;
 
-import android.util.Log;
+import android.os.Bundle;
+import android.view.ViewGroup;
+import android.widget.LinearLayout;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.annotation.UiThread;
 import androidx.fragment.app.Fragment;
-import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
+import androidx.viewpager2.widget.ViewPager2;
 
 import org.androidannotations.annotations.EFragment;
 import org.androidannotations.annotations.ViewById;
@@ -39,13 +41,13 @@ public class SchoolsFragment extends Fragment implements PlaceRecyclerAdapter.On
 
     private static final String TAG = "SchoolsFragment";
 
+    @ViewById(R.id.viewpagerSchools)
+    protected ViewPager2 viewPager2;
+
     @ViewById(R.id.mapSchool)
     protected MapView mapView;
 
     private List<Place> schoolList = new ArrayList<>();
-
-    @ViewById(R.id.recSchooList)
-    protected RecyclerView recSchooList;
 
     private PlaceRecyclerAdapter adapter;
 
@@ -56,12 +58,13 @@ public class SchoolsFragment extends Fragment implements PlaceRecyclerAdapter.On
     @Override
     public void onStart() {
         super.onStart();
-
-        initDatabase();
-
         initMap();
-        
+    }
 
+    @Override
+    public void onCreate(@Nullable Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        initDatabase();
     }
 
     private void initDatabase() {
@@ -115,13 +118,8 @@ public class SchoolsFragment extends Fragment implements PlaceRecyclerAdapter.On
     protected void intiView() {
 
         adapter = new PlaceRecyclerAdapter(schoolList,getContext(),this);
-        if(adapter != null) {
-            recSchooList.setAdapter(adapter);
-            LinearLayoutManager layoutManager = new LinearLayoutManager(getContext(), LinearLayoutManager.HORIZONTAL, false);
-            recSchooList.setLayoutManager(layoutManager);
-        }else{
-            Log.e(TAG, "Unsuccesful load the adapter" );
-        }
+        viewPager2.setLayoutParams(new LinearLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT,ViewGroup.LayoutParams.MATCH_PARENT));
+        viewPager2.setAdapter(adapter);
 
     }
 
@@ -149,8 +147,9 @@ public class SchoolsFragment extends Fragment implements PlaceRecyclerAdapter.On
     @Override
     public void onResume() {
         super.onResume();
-        if (mapView != null)
+        if (mapView != null) {
             mapView.onResume();
+        }
     }
 
     @Override
@@ -159,6 +158,7 @@ public class SchoolsFragment extends Fragment implements PlaceRecyclerAdapter.On
         if (mapView != null)
             mapView.onPause();
     }
+
 }
 
 

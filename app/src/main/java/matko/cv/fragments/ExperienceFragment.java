@@ -2,14 +2,14 @@ package matko.cv.fragments;
 
 import android.os.Bundle;
 import android.util.Log;
-import android.view.View;
+import android.view.ViewGroup;
+import android.widget.LinearLayout;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.annotation.UiThread;
 import androidx.fragment.app.Fragment;
-import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
+import androidx.viewpager2.widget.ViewPager2;
 
 import org.androidannotations.annotations.EFragment;
 import org.androidannotations.annotations.ViewById;
@@ -42,13 +42,13 @@ public class ExperienceFragment extends Fragment implements PlaceRecyclerAdapter
 
     private static final String TAG = "ExperienceFragment";
 
+    @ViewById(R.id.viewpagerExperiences)
+    protected ViewPager2 viewPager2;
+
     @ViewById(R.id.mapExp)
     protected MapView mapView;
 
-    private List<Place> expList = new ArrayList<>();
-
-    @ViewById(R.id.recExpList)
-    protected RecyclerView recExpList;
+    private List<Place> expList = new ArrayList<>();;
 
     private PlaceRecyclerAdapter adapter;
 
@@ -59,11 +59,14 @@ public class ExperienceFragment extends Fragment implements PlaceRecyclerAdapter
     @Override
     public void onStart() {
         super.onStart();
-
-        initDatabase();
-        intiView();
         initMap();
 
+    }
+
+    @Override
+    public void onCreate(@Nullable Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        initDatabase();
     }
 
     private void initDatabase() {
@@ -89,7 +92,7 @@ public class ExperienceFragment extends Fragment implements PlaceRecyclerAdapter
 
                     @Override
                     public void onError(@NonNull Throwable e) {
-
+                        Log.e(TAG, "Error on database loading "+e );
                     }
                 });
 
@@ -115,28 +118,9 @@ public class ExperienceFragment extends Fragment implements PlaceRecyclerAdapter
 
     @UiThread
     protected void intiView() {
-
         adapter = new PlaceRecyclerAdapter(expList, getContext(), this);
-        if(adapter != null ) {
-            recExpList.setAdapter(adapter);
-            LinearLayoutManager layoutManager = new LinearLayoutManager(getContext(), LinearLayoutManager.HORIZONTAL, false);
-            recExpList.setLayoutManager(layoutManager);
-        }else{
-            Log.e(TAG, "Unsuccesful load the adapter" );
-        }
-        
-    }
-
-
-    @Override
-    public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
-        super.onViewCreated(view, savedInstanceState);
-
-        mapView = view.findViewById(R.id.mapExp);
-
-        if (mapView != null) {
-            mapView.onResume();
-        }
+        viewPager2.setLayoutParams(new LinearLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT,ViewGroup.LayoutParams.WRAP_CONTENT));
+        viewPager2.setAdapter(adapter);
     }
 
     @Override
@@ -144,6 +128,12 @@ public class ExperienceFragment extends Fragment implements PlaceRecyclerAdapter
         super.onResume();
         if (mapView != null)
             mapView.onResume();
+    }
+    @Override
+    public void onPause() {
+        super.onPause();
+        if (mapView != null)
+            mapView.onPause();
     }
 
     @Override

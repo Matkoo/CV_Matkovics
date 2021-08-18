@@ -9,23 +9,35 @@
         android:layout_height="match_parent"
         android:layout_centerInParent="true" />
 
-    <TextView
-        android:id="@+id/txExp"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_centerHorizontal="true"
-        android:background="#565e6b"
-        android:paddingHorizontal="10dp"
-        android:text="@string/experience"
-        android:textColor="#ffff"
-        android:textSize="30dp"
-        android:textStyle="bold" />
-
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/recExpList"
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"/>
+        android:orientation="horizontal"
+        android:id="@+id/txExpholder">
+        <TextView
+            android:id="@+id/txExp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:background="#565e6b"
+            android:text="@string/experience"
+            android:textColor="#ffff"
+            android:textSize="20dp"
+            android:textStyle="bold" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@id/txExpholder">
+    <androidx.viewpager2.widget.ViewPager2
+        android:id="@+id/viewpagerExperiences"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layoutDirection="ltr"/>
+    </LinearLayout>
+
 
 
 </RelativeLayout>
