@@ -90,8 +90,7 @@ public class SchoolsFragment extends Fragment implements PlaceRecyclerAdapter.On
                     public void onSuccess(@NonNull List<Place> places) {
 
                         schoolList = new ArrayList<>(places);
-                        if(mapView != null)
-                            mapView.invalidate();
+
                         intiView();
 
                     }
@@ -128,7 +127,7 @@ public class SchoolsFragment extends Fragment implements PlaceRecyclerAdapter.On
 
 
         adapter = new PlaceRecyclerAdapter(schoolList,getContext(),this);
-        viewPager2.setLayoutParams(new LinearLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT,ViewGroup.LayoutParams.MATCH_PARENT));
+        viewPager2.setLayoutParams(new LinearLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT,ViewGroup.LayoutParams.WRAP_CONTENT));
         viewPager2.setAdapter(adapter);
 
 
@@ -148,9 +147,14 @@ public class SchoolsFragment extends Fragment implements PlaceRecyclerAdapter.On
         Marker startMarker = new Marker(mapView);
         startMarker.setPosition(school);
         startMarker.setAnchor(Marker.ANCHOR_CENTER, Marker.ANCHOR_BOTTOM);
+        //do nothing when click on marker
+        startMarker.setOnMarkerClickListener(new Marker.OnMarkerClickListener() {
+            @Override
+            public boolean onMarkerClick(Marker marker, MapView mapView) {
+                return false;
+            }
+        });
         mapView.getOverlays().add(startMarker);
-
-
         mapView.getController().setCenter(school);
         mapView.getController().setZoom(17.0);
         mapView.invalidate();

@@ -17,6 +17,8 @@
     <string name="choose" >Válasszon nyelvet</string>
     
     <!--Skills page     -->
+    <string name="hungariantoskill" >Magyar</string>
+    <string name="englishtoskill" >Angol</string>
     <string name="skills">Ismeretek</string>
     <string name="operatingsystem">Operációs rendszere</string>
     <string name="other">Egyebek</string>

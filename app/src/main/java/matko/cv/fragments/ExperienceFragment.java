@@ -84,8 +84,6 @@ public class ExperienceFragment extends Fragment implements PlaceRecyclerAdapter
                     public void onSuccess(@NonNull List<Place> places) {
 
                         expList = new ArrayList<>(places);
-                        if(mapView != null)
-                            mapView.invalidate();
                         intiView();
 
                     }
@@ -147,7 +145,14 @@ public class ExperienceFragment extends Fragment implements PlaceRecyclerAdapter
 
         Marker startMarker = new Marker(mapView);
         startMarker.setPosition(job);
-//        startMarker.setAnchor(Marker.ANCHOR_CENTER, Marker.ANCHOR_BOTTOM);
+        startMarker.setAnchor(Marker.ANCHOR_CENTER, Marker.ANCHOR_BOTTOM);
+//        do nothing when click on marker
+        startMarker.setOnMarkerClickListener(new Marker.OnMarkerClickListener() {
+            @Override
+            public boolean onMarkerClick(Marker marker, MapView mapView) {
+                return false;
+            }
+        });
         mapView.getOverlays().add(startMarker);
 
 
