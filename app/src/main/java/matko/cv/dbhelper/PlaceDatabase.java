@@ -15,7 +15,7 @@ import matko.cv.model.Place;
  */
 
 
-@Database(entities = Place.class,exportSchema = false,version = 2)
+@Database(entities = Place.class,exportSchema = false,version = 3)
 public abstract class PlaceDatabase extends RoomDatabase {
 
     private static final String DATABASE_NAME ="place_db" ;

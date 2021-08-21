@@ -27,5 +27,6 @@
     <string name="germanlevel">alap fok</string>
     <string name="aboutme">Magamról</string>
     <string name="aboutmecontent">kitartó, szorgalmas, rugalmas</string>
+    <string name="target">Cél</string>
 
 </resources>

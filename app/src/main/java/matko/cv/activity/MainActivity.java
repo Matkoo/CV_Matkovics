@@ -167,7 +167,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
             while ((line = reader.readLine()) != null) {
                 if (count > 0) {
                     String[] split = line.split(",");
-                    placeDatabase.latleletAzonositoDAO().insertPlace(new Place(split[1], split[2], split[3], split[4], split[5], split[6], Integer.parseInt(split[7])));
+                    placeDatabase.latleletAzonositoDAO().insertPlace(new Place(split[1], split[2], split[3], split[4], split[5], split[6],split[7],split[8], Integer.parseInt(split[9])));
                 }
                 count++;
             }

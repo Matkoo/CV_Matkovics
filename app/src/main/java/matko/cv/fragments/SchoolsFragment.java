@@ -19,6 +19,7 @@ import org.osmdroid.views.MapView;
 import org.osmdroid.views.overlay.Marker;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 import io.reactivex.SingleObserver;
@@ -91,7 +92,7 @@ public class SchoolsFragment extends Fragment implements PlaceRecyclerAdapter.On
 
                         schoolList = new ArrayList<>(places);
 
-                        intiView();
+                        initView();
 
                     }
 
@@ -122,10 +123,10 @@ public class SchoolsFragment extends Fragment implements PlaceRecyclerAdapter.On
     }
 
     @UiThread
-    protected void intiView() {
+    protected void initView() {
 
-
-
+        //Set a last school a first in "timeline"
+        Collections.reverse(schoolList);
         adapter = new PlaceRecyclerAdapter(schoolList,getContext(),this);
         viewPager2.setLayoutParams(new LinearLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT,ViewGroup.LayoutParams.WRAP_CONTENT));
         viewPager2.setAdapter(adapter);

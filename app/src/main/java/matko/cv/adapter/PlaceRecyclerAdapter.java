@@ -13,6 +13,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Locale;
 
 import matko.cv.R;
 import matko.cv.model.Place;
@@ -60,14 +61,23 @@ public class PlaceRecyclerAdapter extends RecyclerView.Adapter<PlaceRecyclerAdap
     @Override
     public void onBindViewHolder(@NonNull PlaceVH holder, int position) {
 
+
         holder.txPlaceName.setText(placeList.get(position).getPlaceName());
-        holder.txType.setText(placeList.get(position).getType());
         holder.txTimeSpent.setText(placeList.get(position).getTimeSpent());
-        holder.txDesc.setText(placeList.get(position).getDesc());
+
+        //when english the language change the description and etc to english
+        if ( Locale.getDefault().getLanguage().contains("en")){
+            holder.txType.setText(placeList.get(position).getTypeEN());
+            holder.txdescHU.setText(placeList.get(position).getDescEN());
+        }else{
+            holder.txType.setText(placeList.get(position).gettypeHU());
+            holder.txdescHU.setText(placeList.get(position).getdescHU());
+        }
 
         boolean isExpanded = placeList.get(position).isExpanded();
         holder.expandableLayout.setVisibility(isExpanded ? View.VISIBLE : View.GONE);
 
+        // set the visibility for the arrow on the menu
         if ( placeList.get(position).getId() == firstItem ) {
             holder.backwardArrow.setVisibility(View.INVISIBLE);
 
@@ -92,7 +102,7 @@ public class PlaceRecyclerAdapter extends RecyclerView.Adapter<PlaceRecyclerAdap
 
     public class PlaceVH extends RecyclerView.ViewHolder implements View.OnClickListener {
 
-        TextView txPlaceName, txType, txTimeSpent, txDesc;
+        TextView txPlaceName, txType, txTimeSpent, txdescHU;
         ImageView forwardArrow,backwardArrow;
         OnPlaceListener onPlaceListener;
 
@@ -106,7 +116,7 @@ public class PlaceRecyclerAdapter extends RecyclerView.Adapter<PlaceRecyclerAdap
             txPlaceName = itemView.findViewById(R.id.txPlaceName);
             txType = itemView.findViewById(R.id.txType);
             txTimeSpent = itemView.findViewById(R.id.txTimeSpent);
-            txDesc = itemView.findViewById(R.id.txDesc);
+            txdescHU = itemView.findViewById(R.id.txdescHU);
             expandableLayout = itemView.findViewById(R.id.expandableLayout);
             backwardArrow = itemView.findViewById(R.id.backArrow);
             forwardArrow = itemView.findViewById(R.id.forwardArrow);

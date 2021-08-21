@@ -19,6 +19,7 @@ import org.osmdroid.views.MapView;
 import org.osmdroid.views.overlay.Marker;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 import io.reactivex.SingleObserver;
@@ -84,7 +85,7 @@ public class ExperienceFragment extends Fragment implements PlaceRecyclerAdapter
                     public void onSuccess(@NonNull List<Place> places) {
 
                         expList = new ArrayList<>(places);
-                        intiView();
+                        initView();
 
                     }
 
@@ -115,7 +116,9 @@ public class ExperienceFragment extends Fragment implements PlaceRecyclerAdapter
     }
 
     @UiThread
-    protected void intiView() {
+    protected void initView() {
+        //Set a last experience a first in the "timeline"
+        Collections.reverse(expList);
         adapter = new PlaceRecyclerAdapter(expList, getContext(), this);
         viewPager2.setLayoutParams(new LinearLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT,ViewGroup.LayoutParams.WRAP_CONTENT));
         viewPager2.setAdapter(adapter);

@@ -25,4 +25,5 @@
     <string name="germanlevel" translatable="false">basic level</string>
     <string name="aboutme" translatable="false">About me</string>
     <string name="aboutmecontent" translatable="false">persistent , diligent, flexible</string>
+    <string name="target">Target</string>
 </resources>

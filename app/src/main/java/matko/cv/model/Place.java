@@ -19,11 +19,15 @@ public class Place {
 
     private String placeName;
 
-    private String type;
+    private String typeHU;
+
+    private String typeEN;
 
     private String timeSpent;
 
-    private String desc;
+    private String descHU;
+
+    private String descEN;
 
     private String latitude;
 
@@ -34,11 +38,13 @@ public class Place {
     @Ignore
     private boolean expanded;
 
-    public Place(String placeName, String type, String timeSpent, String desc, String latitude, String longitude, int isSchool) {
+    public Place(String placeName, String typeHU, String typeEN, String timeSpent, String descHU, String descEN, String latitude, String longitude, int isSchool) {
         this.placeName = placeName;
-        this.type = type;
+        this.typeHU = typeHU;
+        this.typeEN = typeEN;
         this.timeSpent = timeSpent;
-        this.desc = desc;
+        this.descHU = descHU;
+        this.descEN = descEN;
         this.latitude = latitude;
         this.longitude = longitude;
         this.isSchool = isSchool;
@@ -60,12 +66,12 @@ public class Place {
         this.placeName = placeName;
     }
 
-    public String getType() {
-        return type;
+    public String gettypeHU() {
+        return typeHU;
     }
 
-    public void setType(String type) {
-        this.type = type;
+    public void settypeHU(String typeHU) {
+        this.typeHU = typeHU;
     }
 
     public String getTimeSpent() {
@@ -92,12 +98,12 @@ public class Place {
         this.longitude = longitude;
     }
 
-    public String getDesc() {
-        return desc;
+    public String getdescHU() {
+        return descHU;
     }
 
-    public void setDesc(String desc) {
-        this.desc = desc;
+    public void setdescHU(String descHU) {
+        this.descHU = descHU;
     }
 
     public boolean isExpanded() {
@@ -116,5 +122,35 @@ public class Place {
         isSchool = school;
     }
 
+    public String getTypeHU() {
+        return typeHU;
+    }
 
+    public void setTypeHU(String typeHU) {
+        this.typeHU = typeHU;
+    }
+
+    public String getTypeEN() {
+        return typeEN;
+    }
+
+    public void setTypeEN(String typeEN) {
+        this.typeEN = typeEN;
+    }
+
+    public String getDescHU() {
+        return descHU;
+    }
+
+    public void setDescHU(String descHU) {
+        this.descHU = descHU;
+    }
+
+    public String getDescEN() {
+        return descEN;
+    }
+
+    public void setDescEN(String descEN) {
+        this.descEN = descEN;
+    }
 }

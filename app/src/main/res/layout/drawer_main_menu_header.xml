@@ -32,9 +32,13 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@+id/name"
-        android:layout_margin="7dp"
+        android:layout_marginStart="7dp"
+        android:layout_marginTop="7dp"
+        android:layout_marginEnd="7dp"
+        android:layout_marginBottom="7dp"
         android:layout_toRightOf="@+id/profile_picture"
         android:text="+36 70 584 5175 "
+        android:autoLink="phone"
         android:textColor="#ffffff"
         android:textSize="11dp" />
 
@@ -45,6 +49,7 @@
         android:layout_marginLeft="7dp"
         android:layout_toRightOf="@+id/profile_picture"
         android:text="gergelymatkovics82@gmail.com"
+        android:autoLink="email"
         android:textColor="#ffffff"
         android:textSize="11dp" />
 

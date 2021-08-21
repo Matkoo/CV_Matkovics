@@ -27,7 +27,7 @@
             android:layout_height="wrap_content"
             android:layout_centerVertical="true"
             android:layout_toRightOf="@+id/backArrow"
-            android:text="Example"
+            android:text="PLace name"
             android:textSize="25dp"
             android:textStyle="bold" />
         <ImageView
@@ -67,7 +67,7 @@
                             android:layout_height="wrap_content"
                             android:layout_marginStart="16dp"
                             android:layout_marginLeft="16dp"
-                            android:text="Release Year:"
+                            android:text="Type"
                             android:textAppearance="@style/TextAppearance.AppCompat.Small"
                             android:textStyle="bold"
                             app:layout_constraintStart_toStartOf="parent"
@@ -79,7 +79,7 @@
                             android:layout_height="wrap_content"
                             android:layout_marginEnd="8dp"
                             android:layout_marginRight="8dp"
-                            android:text="Rating:"
+                            android:text="Time spent"
                             android:textAppearance="@style/TextAppearance.AppCompat.Small"
                             android:textStyle="bold"
                             app:layout_constraintEnd_toEndOf="parent"
@@ -92,13 +92,13 @@
                             android:layout_marginStart="16dp"
                             android:layout_marginLeft="16dp"
                             android:layout_marginTop="8dp"
-                            android:text="Plot"
+                            android:text="@string/target"
                             android:textStyle="bold"
                             app:layout_constraintStart_toStartOf="parent"
                             app:layout_constraintTop_toBottomOf="@+id/txType" />
 
                         <TextView
-                            android:id="@+id/txDesc"
+                            android:id="@+id/txdescHU"
                             android:layout_width="0dp"
                             android:layout_height="wrap_content"
                             android:layout_marginStart="16dp"
