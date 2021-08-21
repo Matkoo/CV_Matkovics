@@ -115,4 +115,6 @@ public class Place {
     public void setSchool(int school) {
         isSchool = school;
     }
+
+
 }

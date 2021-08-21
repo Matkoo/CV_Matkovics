@@ -4,6 +4,7 @@ import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -32,6 +33,10 @@ public class PlaceRecyclerAdapter extends RecyclerView.Adapter<PlaceRecyclerAdap
 
     private int lastPlace;
 
+    private int firstItem;
+
+    private int lastItem;
+
     public PlaceRecyclerAdapter(List<Place> placeList, Context mContext, OnPlaceListener mOnPlaceListener) {
         this.placeList = placeList;
         this.mContext = mContext;
@@ -41,11 +46,13 @@ public class PlaceRecyclerAdapter extends RecyclerView.Adapter<PlaceRecyclerAdap
     @NonNull
     @Override
     public PlaceVH onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+
         View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.list_item, parent, false);
         RecyclerView.ViewHolder holder = new PlaceVH(view, mOnPlaceListener);
-
-
         lastPlace = -1;
+
+        firstItem = placeList.get(0).getId();
+        lastItem  = placeList.get(placeList.size()-1).getId();
 
         return (PlaceVH) holder;
     }
@@ -61,6 +68,19 @@ public class PlaceRecyclerAdapter extends RecyclerView.Adapter<PlaceRecyclerAdap
         boolean isExpanded = placeList.get(position).isExpanded();
         holder.expandableLayout.setVisibility(isExpanded ? View.VISIBLE : View.GONE);
 
+        if ( placeList.get(position).getId() == firstItem ) {
+            holder.backwardArrow.setVisibility(View.INVISIBLE);
+
+        }else {
+            holder.backwardArrow.setVisibility(View.VISIBLE);
+        }
+        if (placeList.get(position).getId() == lastItem){
+            holder.forwardArrow.setVisibility(View.INVISIBLE);
+        }else {
+            holder.forwardArrow.setVisibility(View.VISIBLE);
+        }
+
+
 
     }
 
@@ -73,6 +93,7 @@ public class PlaceRecyclerAdapter extends RecyclerView.Adapter<PlaceRecyclerAdap
     public class PlaceVH extends RecyclerView.ViewHolder implements View.OnClickListener {
 
         TextView txPlaceName, txType, txTimeSpent, txDesc;
+        ImageView forwardArrow,backwardArrow;
         OnPlaceListener onPlaceListener;
 
         ConstraintLayout expandableLayout;
@@ -87,7 +108,8 @@ public class PlaceRecyclerAdapter extends RecyclerView.Adapter<PlaceRecyclerAdap
             txTimeSpent = itemView.findViewById(R.id.txTimeSpent);
             txDesc = itemView.findViewById(R.id.txDesc);
             expandableLayout = itemView.findViewById(R.id.expandableLayout);
-
+            backwardArrow = itemView.findViewById(R.id.backArrow);
+            forwardArrow = itemView.findViewById(R.id.forwardArrow);
 
 
             itemView.setOnClickListener(this);

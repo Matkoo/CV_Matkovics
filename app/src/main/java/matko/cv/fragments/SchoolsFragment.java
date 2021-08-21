@@ -2,6 +2,7 @@ package matko.cv.fragments;
 
 import android.os.Bundle;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 
 import androidx.annotation.NonNull;
@@ -55,10 +56,17 @@ public class SchoolsFragment extends Fragment implements PlaceRecyclerAdapter.On
 
     private Place slectedPlace;
 
+    @ViewById(R.id.forwardArrow)
+    protected ImageView forwardArrow;
+
+    @ViewById(R.id.backArrow)
+    protected ImageView backArrow;
+
     @Override
     public void onStart() {
         super.onStart();
         initMap();
+
     }
 
     @Override
@@ -117,11 +125,16 @@ public class SchoolsFragment extends Fragment implements PlaceRecyclerAdapter.On
     @UiThread
     protected void intiView() {
 
+
+
         adapter = new PlaceRecyclerAdapter(schoolList,getContext(),this);
         viewPager2.setLayoutParams(new LinearLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT,ViewGroup.LayoutParams.MATCH_PARENT));
         viewPager2.setAdapter(adapter);
 
+
+      
     }
+
 
     @Override
     public void onPlaceClick(int position) {
@@ -143,6 +156,7 @@ public class SchoolsFragment extends Fragment implements PlaceRecyclerAdapter.On
         mapView.invalidate();
 
     }
+
 
     @Override
     public void onResume() {
