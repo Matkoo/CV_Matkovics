@@ -153,8 +153,7 @@ public class ExperienceFragment extends Fragment implements PlaceRecyclerAdapter
         startMarker.setOnMarkerClickListener(new Marker.OnMarkerClickListener() {
             @Override
             public boolean onMarkerClick(Marker marker, MapView mapView) {
-                return false;
-            }
+                return false; }
         });
         mapView.getOverlays().add(startMarker);
 
@@ -164,4 +163,5 @@ public class ExperienceFragment extends Fragment implements PlaceRecyclerAdapter
         mapView.invalidate();
 
     }
+
 }
