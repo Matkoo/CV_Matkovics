@@ -61,16 +61,25 @@ public class HobbysFragment extends Fragment {
             public void run() {
                 switch (animationCounter++) {
                     case 1:
-                        switcher.setImageResource(R.drawable.fixiewithpack);
+                        switcher.setImageResource(R.drawable.topofthepeak);
                         break;
                     case 2:
-                        switcher.setImageResource(R.drawable.mewithfixie);
+                        switcher.setImageResource(R.drawable.withtent);
                         break;
                     case 3:
-                        switcher.setImageResource(R.drawable.forestfixie);
+                        switcher.setImageResource(R.drawable.fixiewithbag);
+                        break;
+                    case 4:
+                        switcher.setImageResource(R.drawable.snowlandscape);
+                        break;
+                    case 5:
+                        switcher.setImageResource(R.drawable.winterpeak);
+                        break;
+                    case 6:
+                        switcher.setImageResource(R.drawable.cloudywinter);
                         break;
                 }
-                animationCounter %= 4;
+                animationCounter %= 7;
                 if(animationCounter == 0 ) animationCounter = 1;
 
                 imageSwitcherHandler.postDelayed(this, 3000);

@@ -107,9 +107,9 @@ public class ExperienceFragment extends Fragment implements PlaceRecyclerAdapter
             mapView.setMultiTouchControls(true);
 
 
-            //set the map to Tatabánya
-            mapView.getController().setCenter(new GeoPoint( 47.560504585701146, 18.424900931157893));
-            mapView.getController().setZoom(14.0);
+            //set the map to Budapest
+            mapView.getController().setCenter(new GeoPoint(  47.51592011212468, 19.044502645771374));
+            mapView.getController().setZoom(12.0);
             mapView.invalidate();
 
         }
