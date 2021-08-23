@@ -20,13 +20,16 @@
     <string name="hungariantoskill" >Magyar</string>
     <string name="englishtoskill" >Angol</string>
     <string name="skills">Ismeretek</string>
-    <string name="operatingsystem">Operációs rendszere</string>
+    <string name="operatingsystem">Operációs rendszerek</string>
     <string name="other">Egyebek</string>
     <string name="hungarianlevel">anyanyelv</string>
     <string name="englishlevel">középfok</string>
-    <string name="germanlevel">alap fok</string>
+    <string name="germanlevel">alapfok</string>
     <string name="aboutme">Magamról</string>
     <string name="aboutmecontent">kitartó, szorgalmas, rugalmas</string>
     <string name="target">Cél</string>
+
+    <!-- Hobby page -->
+    <string name="hobbysname">fallabda, kerékpáros túrázás, túrázás</string>
 
 </resources>

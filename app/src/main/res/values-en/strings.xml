@@ -18,7 +18,7 @@
     <string name="hungariantoskill" translatable="false">Hungarian</string>
     <string name="englishtoskill" >English</string>
     <string name="skills" translatable="false">Skills</string>
-    <string name="operatingsystem" translatable="false">Operating system</string>
+    <string name="operatingsystem" translatable="false">Operating systems</string>
     <string name="other" translatable="false">Others</string>
     <string name="hungarianlevel" translatable="false">mother tongue</string>
     <string name="englishlevel" translatable="false">intermediate</string>
@@ -26,4 +26,7 @@
     <string name="aboutme" translatable="false">About me</string>
     <string name="aboutmecontent" translatable="false">persistent , diligent, flexible</string>
     <string name="target">Target</string>
+
+    <!-- Hobby page -->
+    <string name="hobbysname" translatable="false">squash, bicycle touring, hiking</string>
 </resources>
