@@ -30,13 +30,13 @@
         android:textStyle="bold" />
 
     <TextView
+        android:id="@+id/skillsTv"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/skillsTv"
         android:layout_below="@+id/javaTv"
-        android:layout_marginTop="5dp"
         android:layout_marginLeft="30dp"
-        android:text="android, OSM, java 8, java se, swing , fx, java ee" />
+        android:layout_marginTop="5dp"
+        android:text="android, OSM, java 8, java se, swing, fx, java ee" />
 
     <TextView
         android:layout_width="wrap_content"
@@ -91,7 +91,7 @@
         android:layout_below="@+id/otherTv"
         android:layout_marginLeft="30dp"
         android:layout_marginTop="5dp"
-        android:text="jira, git, maven, gradel, azure devops" />
+        android:text="jira, git, maven, gradle, azure devops" />
 
     <TextView
         android:id="@+id/languageTv"

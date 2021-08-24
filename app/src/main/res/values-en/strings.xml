@@ -24,9 +24,9 @@
     <string name="englishlevel" translatable="false">intermediate</string>
     <string name="germanlevel" translatable="false">basic level</string>
     <string name="aboutme" translatable="false">About me</string>
-    <string name="aboutmecontent" translatable="false">persistent , diligent, flexible</string>
+    <string name="aboutmecontent" translatable="false">persistent, diligent, flexible</string>
     <string name="target">Target</string>
 
     <!-- Hobby page -->
-    <string name="hobbysname" translatable="false">squash, bicycle touring, hiking</string>
+    <string name="hobbysname" translatable="false">bicycle touring, hiking, squash</string>
 </resources>

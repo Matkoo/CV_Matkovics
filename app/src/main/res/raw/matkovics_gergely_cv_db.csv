@@ -1,13 +1,13 @@
 id,placeName,typeHU,typeEN,timeSpent,descHU,descEN,latitude,longitude,isSchool
 1,Árpád,Diák,Student, 1997-2001,Érettségi,Graduation,47.586831,18.397964,1
-2,Bárdos,Diák,Student,2001-2002,Szoftverüzemeltető ,Sofware operator, 47.561961,18.413787,1
+2,Bárdos,Diák,Student,2001-2002,Szoftverüzemeltető ,Software operator, 47.561961,18.413787,1
 3,Javatech,Diák,Student,2018-2019,Junior java fejlesztő,Junior java developer ,47.464816,19.037028,1
 4,Sanmina Sci,Hibakereső technikus,Debugger technician, 2003-2005,GSM hálózat a adó vevő egységein hibakeresés,GSM network troubleshooting the transmitter receiver units,47.56735599156514,18.4361683169081,0
 5,Coloplast,Technikus,Technician,2005-2014,Gépek karbantartása beállítása; gyártó gépsorok fejlesztése,Setting up machine maintenance; developing production lines, 47.58779358439569,18.355686644621873,0
-6,ITG Gmbh,Raktáros,Storekeeper, 2014-2015,Komissiózás,Product piking ,48.351680,11.831200,0
+6,ITG Gmbh,Raktáros,Storekeeper, 2014-2015,Komissiózás,Product picking ,48.351680,11.831200,0
 7,GLS,Sofőr,Driver ,2015-2016,Csomagkiszállítás, Parcel delivery,48.310330,11.881190,0
 8,Farradkurier ,Biciklis futár,Bicycle messenger,2015-2016,Csomagkiszállítás, Parcel delivery,48.12592467436025,11.543749411484857,0
 9,Róka ,Összeszerelő,Assembly worker, 2016-2017,Büfé kocsi átalakítás,Street food truck building,47.56818496514406, 18.36002773160073,0
 10,Hajtás Pajtás,Biciklis futár,Bicycle messenger ,2017-2019,Csomagkiszállítás, Parcel delivery,47.505115914137654,19.06864381157329,0
-11,Internd,Gyakornok,Intership developer ,2019-2019,Spring alapú adatbázist használó; vaadin frontendű saját projekt fejlesztése,Development of a own project with a vaadin; spring and database,47.55407886783509,19.08041172441782,0
+11,Internd,Gyakornok,Intership developer ,2019-2019,Spring alapú adatbázist használó; vaadin frontendű saját projekt fejlesztése,Development of own project with vaadin; spring and database,47.55407886783509,19.08041172441782,0
 12,ITQS,Junior java developer,Junior java developer ,2019-2021,Termék minőség ellenőrzős rendszer AI alapokon; saját kamerarendszer; Edge és Cloud feldolgozás,Product fault detection system based on AI; custom-developed data logging hardware; Edge and Cloud processing,47.50496138907644,19.05482478646942,0
