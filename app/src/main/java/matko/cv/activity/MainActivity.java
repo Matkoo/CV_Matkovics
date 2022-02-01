@@ -40,6 +40,12 @@ import matko.cv.fragments.SchoolsFragment;
 import matko.cv.fragments.SchoolsFragment_;
 import matko.cv.model.Place;
 
+/**
+ * @author Matkovics Gergely<br>
+ * E-mail: <a href=
+ * "mailto:gergelymatkovics82@gmail.com">gergelymatkovics82@gmail.com</a>
+ */
+
 @EActivity(R.layout.activity_main)
 public class MainActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
 
